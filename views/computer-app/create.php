@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ComputerApp */
 
-$this->title = 'Create Computer App';
+$this->title = 'Install the application on the computer';
 $this->params['breadcrumbs'][] = ['label' => 'Computer Apps', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

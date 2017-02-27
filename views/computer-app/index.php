@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
     if (User::isUserAdmin(Yii::$app->user->identity->username)) {
-        echo Html::a('Create Computer App', ['create'], ['class' => 'btn btn-success']);
+        echo Html::a('Install the apps', ['create'], ['class' => 'btn btn-success']);
         $actionColumn = ['class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete}',
             'buttons' => [
