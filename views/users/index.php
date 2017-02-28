@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php
-    if (User::isUserAdmin(Yii::$app->user->identity->username)) {
+    if (User::isUserAdmin()) {
         echo Html::a('Create Users', ['create'], ['class' => 'btn btn-success']);
         $actionColumn = ['class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete}',

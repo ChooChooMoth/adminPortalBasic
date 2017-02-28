@@ -41,7 +41,7 @@ class ApplicationsController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -49,7 +49,7 @@ class ApplicationsController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -57,7 +57,7 @@ class ApplicationsController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                 ],

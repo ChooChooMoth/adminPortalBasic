@@ -38,7 +38,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Sign up', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     }
-    elseif (User::isUserAdmin(Yii::$app->user->identity->username)) {
+    elseif (User::isUserAdmin()) {
         $menuItems = [
             ['label' => 'CompAppRelations', 'url' => ['/computer-app/index']],
             ['label' => 'Users', 'url' => ['/users/index']],

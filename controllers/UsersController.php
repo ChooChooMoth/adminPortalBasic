@@ -30,7 +30,7 @@ class UsersController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -38,7 +38,7 @@ class UsersController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -46,7 +46,7 @@ class UsersController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -54,7 +54,7 @@ class UsersController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                     [
@@ -62,7 +62,7 @@ class UsersController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin();
                         }
                     ],
                 ],
