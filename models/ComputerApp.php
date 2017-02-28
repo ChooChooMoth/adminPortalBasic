@@ -25,6 +25,8 @@ class ComputerApp extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['computer_id', 'in', 'range' => [0,1]],// TODO: записать в этот рендж существующие в базе айдишники
+            ['app_id', 'in', 'range' => [0,1]],
             [['computer_id', 'app_id'], 'required'],
             [['computer_id', 'app_id'], 'integer'],
         ];

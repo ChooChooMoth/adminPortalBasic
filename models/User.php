@@ -217,6 +217,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function isUserAdmin()
     {
-        return true;//static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]);
+        return static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]);
     }
 }
