@@ -27,8 +27,7 @@ class Applications extends \yii\db\ActiveRecord
     {
         return [
             [['app_name', 'vendor_name'], 'required'],
-            ['licence_required', 'match', 'pattern'=>'/^[0-1]$/'],
-            [['licence_required'], 'integer'],
+            ['licence_required', 'in', 'range' => [0,1]],
             [['app_name', 'vendor_name'], 'string', 'max' => 255],
         ];
     }

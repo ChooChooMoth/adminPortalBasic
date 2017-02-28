@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Users;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -26,39 +25,6 @@ class UsersController extends Controller
                 'only' => ['index','view', 'create', 'update', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
@@ -83,7 +49,7 @@ class UsersController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Users::find(),
+            'query' => User::find(),
         ]);
 
         return $this->render('index', [
@@ -110,7 +76,7 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -122,7 +88,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -141,7 +107,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -157,12 +123,12 @@ class UsersController extends Controller
      * Finds the Users model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

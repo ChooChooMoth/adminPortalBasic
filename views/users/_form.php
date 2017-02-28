@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Users */
+/* @var $model app\models\User */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -23,9 +24,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'ban_date')->textInput() ?>
+    <?php
+    echo 'Ban Date';
+    echo DatePicker::widget([
+        'name' => 'dp_1',
+        'type' => DatePicker::TYPE_INPUT,
+        'value' => "$model->ban_date",
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
         '0' => 'Active',

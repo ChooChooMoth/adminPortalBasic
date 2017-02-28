@@ -26,39 +26,6 @@ class ComputerAppController extends Controller
                 'only' => ['index','view','create', 'update', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {

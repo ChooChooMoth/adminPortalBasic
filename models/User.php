@@ -23,7 +23,6 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-
     const ROLE_ADMIN = 2;
     const ROLE_USER = 1;
     const STATUS_DELETED = 0;
@@ -35,7 +34,25 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%users}}';
+        return 'users';
+    }
+    /**
+     * @inheritdoc
+     */
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+            'password_hash' => 'Password Hash',
+            'id_role' => 'Id Role',
+            'comment' => 'Comment',
+            'created_at' => 'Created At',
+            'ban_date' => 'Ban Date',
+            'status' => 'Status',
+            'auth_key' => 'Auth Key',
+        ];
     }
 
     /**
@@ -44,7 +61,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            //TimestampBehavior::className(),
+           // TimestampBehavior::className(),
         ];
     }
 
@@ -58,6 +75,12 @@ class User extends ActiveRecord implements IdentityInterface
             ['id_role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['id_role', 'status'], 'integer'],
+            [['comment', 'auth_key'], 'string'],
+            [['created_at', 'ban_date'], 'safe'],
+            [['username'], 'string', 'max' => 45],
+            [['password_hash'], 'string', 'max' => 255],
+            [['username'], 'unique'],
         ];
     }
 
@@ -194,6 +217,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function isUserAdmin()
     {
-        return static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]);
+        return true;//static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]);
     }
 }

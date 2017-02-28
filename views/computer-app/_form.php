@@ -15,10 +15,10 @@ use yii\helpers\ArrayHelper;
 
     $computers = \app\models\Computers::find()->all();
     $applications = \app\models\Applications::find()->all();
-    $itemsC = ArrayHelper::map($computers,'computer_id','computer_name');
-    $itemsA = ArrayHelper::map($applications,'app_id','app_name');
-    echo $form->field($model, 'computer_id')->dropDownList($itemsC);
-    echo $form->field($model, 'app_id')->dropDownList($itemsA);?>
+    $itemsComp = ArrayHelper::map($computers,'computer_id','computer_name');
+    $itemsApp = ArrayHelper::map($applications,'app_id','app_name');
+    echo $form->field($model, 'computer_id')->dropDownList($itemsComp);
+    echo $form->field($model, 'app_id')->dropDownList($itemsApp);?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

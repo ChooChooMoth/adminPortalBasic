@@ -27,33 +27,12 @@ class ComputersController extends Controller
                 'only' => ['index','view', 'create', 'update', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return User::isUserAdmin();
-                        }
-                    ],
-                    [
-                        'actions' => ['delete'],
+                        'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function () {
