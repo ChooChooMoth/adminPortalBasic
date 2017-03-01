@@ -15,10 +15,10 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'username')->textInput() ?>
 
-    <?= $form->field($model, 'pass')->textInput() ?>
+    <?= $form->field($model, 'pass')->passwordInput() ?>
     <?= $form->field($model, 'id_role')->dropDownList([
         '1' => 'User',
-        '2'=>'Admin'
+        '2' => 'Admin'
     ])?>
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
@@ -33,8 +33,8 @@ use kartik\date\DatePicker;
     ]); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-        '0' => 'Active',
-        '10'=>'Banned'
+        '10' => 'Active',
+        '0' => 'Banned'
     ])?>
 
     <div class="form-group">

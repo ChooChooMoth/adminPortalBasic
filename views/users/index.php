@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
         //'comment:ntext',
          'created_at',
         // 'ban_date',
-        // 'status',
+         'status',
         // 'auth_key:ntext',
 
         $actionColumn,

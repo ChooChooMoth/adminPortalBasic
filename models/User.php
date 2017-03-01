@@ -20,6 +20,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $pass
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -27,6 +28,7 @@ class User extends ActiveRecord implements IdentityInterface
     const ROLE_USER = 1;
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $pass;
 
 
     /**
@@ -52,6 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
             'ban_date' => 'Ban Date',
             'status' => 'Status',
             'auth_key' => 'Auth Key',
+            'pass' => 'Password',
         ];
     }
 
@@ -77,10 +80,14 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             [['id_role', 'status'], 'integer'],
             [['comment', 'auth_key'], 'string'],
-            [['created_at', 'ban_date'], 'safe'],
-            [['username'], 'string', 'max' => 45],
+            [['created_at', 'ban_date', 'pass'], 'safe'],
             [['password_hash'], 'string', 'max' => 255],
-            [['username'], 'unique'],
+
+            ['username', 'trim'],
+            [['username','pass'], 'required'],
+            ['username', 'unique', 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['pass', 'string', 'min' => 6],
         ];
     }
 
@@ -217,6 +224,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function isUserAdmin()
     {
-        return static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]);
+        return static::findOne(['username' => Yii::$app->user->identity->username, 'id_role' => self::ROLE_ADMIN]) == null ? false : true;
     }
 }
