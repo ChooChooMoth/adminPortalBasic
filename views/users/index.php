@@ -43,16 +43,31 @@ $this->params['breadcrumbs'][] = $this->title;
         //'id',
         'username',
         //'password_hash',
-        'id_role',
+        [
+            'attribute' => 'id_role',
+            'value' => function($model) {
+                if ($model->id_role == 1)
+                    return 'User';
+                else
+                    return 'Admin';
+            }
+        ],
         //'comment:ntext',
          'created_at',
         // 'ban_date',
-         'status',
+         [
+             'attribute' => 'status',
+             'value' => function($model) {
+             if ($model->status == 10)
+              return 'Active';
+                  else
+                      return 'Banned';
+            }
+         ],
         // 'auth_key:ntext',
 
         $actionColumn,
     ];
-
     // Renders a export dropdown menu
     echo ExportMenu::widget([
         'dataProvider' => $dataProvider,

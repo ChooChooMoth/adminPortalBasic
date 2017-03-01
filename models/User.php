@@ -48,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'username' => 'Username',
             'password_hash' => 'Password Hash',
-            'id_role' => 'Id Role',
+            'id_role' => 'Role',
             'comment' => 'Comment',
             'created_at' => 'Created At',
             'ban_date' => 'Ban Date',
