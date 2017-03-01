@@ -39,8 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ];
     }
     $gridColumns = [
+        ['class' => 'yii\grid\SerialColumn'],
 
-        'app_id',
+        //'app_id',
         'app_name',
         'vendor_name',
         'licence_required',

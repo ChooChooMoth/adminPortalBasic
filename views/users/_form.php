@@ -13,10 +13,9 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput() ?>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
-
+    <?= $form->field($model, 'pass')->textInput() ?>
     <?= $form->field($model, 'id_role')->dropDownList([
         '1' => 'User',
         '2'=>'Admin'
@@ -25,10 +24,7 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
     <?php
-    echo 'Ban Date';
-    echo DatePicker::widget([
-        'name' => 'dp_1',
-        'type' => DatePicker::TYPE_INPUT,
+    echo $form->field($model, 'ban_date')->widget(DatePicker::className(), [
         'value' => "$model->ban_date",
         'pluginOptions' => [
             'autoclose'=>true,
@@ -40,7 +36,6 @@ use kartik\date\DatePicker;
         '0' => 'Active',
         '10'=>'Banned'
     ])?>
-    <?= $form->field($model, 'auth_key')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
