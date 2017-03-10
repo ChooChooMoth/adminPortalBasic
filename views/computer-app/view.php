@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             //'computer_id',
             //'app_id',
-            'id',
+            //'id',
             [
                 'attribute' => 'computer_id',
                 'value' => function($model) {

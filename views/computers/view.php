@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         echo DetailView::widget([
             'model' => $item,
             'attributes' => [
-                'app_id',
+                //'app_id',
                 'app_name',
                 'vendor_name',
                 //'licence_required',
