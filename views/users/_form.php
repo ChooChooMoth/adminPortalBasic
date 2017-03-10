@@ -24,8 +24,8 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
     <?php
-    echo $form->field($model, 'ban_date')->widget(DatePicker::className(), [
-        'value' => "$model->ban_date",
+    echo $form->field($model, 'created_at')->widget(DatePicker::className(), [
+        'value' => "$model->created_at",
         'pluginOptions' => [
             'autoclose'=>true,
             'format' => 'yyyy-mm-dd'

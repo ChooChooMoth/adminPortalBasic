@@ -51,7 +51,6 @@ class User extends ActiveRecord implements IdentityInterface
             'id_role' => 'Role',
             'comment' => 'Comment',
             'created_at' => 'Created At',
-            'ban_date' => 'Ban Date',
             'status' => 'Status',
             'auth_key' => 'Auth Key',
             'pass' => 'Password',
@@ -78,15 +77,14 @@ class User extends ActiveRecord implements IdentityInterface
             ['id_role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['id_role', 'status'], 'integer'],
             [['comment', 'auth_key'], 'string'],
-            [['created_at', 'ban_date', 'pass'], 'safe'],
+            [['created_at', 'pass'], 'safe'],
             [['password_hash'], 'string', 'max' => 255],
 
             ['username', 'trim'],
             [['username','pass'], 'required'],
             ['username', 'unique', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'string', 'min' => 2, 'max' => 45],
             ['pass', 'string', 'min' => 6],
         ];
     }

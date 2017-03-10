@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php
-    if (User::isUserAdmin()) {
         echo Html::a('Create Users', ['create'], ['class' => 'btn btn-success']);
         $actionColumn = ['class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete}',
@@ -31,12 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ]
         ];
-    }
-    else{
-        $actionColumn =   ['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}',
-        ];
-    }
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
 
@@ -54,7 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         //'comment:ntext',
          'created_at',
-        // 'ban_date',
          [
              'attribute' => 'status',
              'value' => function($model) {

@@ -23,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_role',
             'comment:ntext',
             'created_at',
-            'ban_date',
             'status',
             'auth_key:ntext',
         ],

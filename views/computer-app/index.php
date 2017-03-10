@@ -43,14 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
         //'app_id',
         //'id',
         [
-            'attribute' => 'comp_name',
+            'attribute' => 'computer_id',
             'value' => function($model) {
                 $comps = \app\models\Computers::findOne($model->computer_id);
                 return $items = $comps->computer_name;
             }
         ],
         [
-            'attribute' => 'app_name',
+            'attribute' => 'app_id',
             'value' => function($model) {
                 $apps = \app\models\Applications::findOne($model->app_id);
                 return $items = $apps->app_name;

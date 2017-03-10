@@ -38,10 +38,8 @@ class ComputerApp extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'comp_name' => 'Computer Name',
-            'app_name' => 'Application Name',
-            'computer_id' => 'Computer ID',
-            'app_id' => 'App ID',
+            'computer_id' => 'Computer Name',
+            'app_id' => 'Application Name',
             'id' => 'ID',
         ];
     }
