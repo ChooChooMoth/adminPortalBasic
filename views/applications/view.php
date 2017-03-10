@@ -20,7 +20,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'app_id',
             'app_name',
             'vendor_name',
-            'licence_required',
+            //'licence_required',
+            [
+                'attribute' => 'licence_required',
+                'value' => function($model) {
+                    if ($model->licence_required == 1)
+                        return 'Yes';
+                    else
+                        return 'No';
+                }
+            ],
         ],
     ]) ?>
 

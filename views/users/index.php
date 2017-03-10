@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
         //'comment:ntext',
-         'created_at',
+         //'created_at',
          [
              'attribute' => 'status',
              'value' => function($model) {
