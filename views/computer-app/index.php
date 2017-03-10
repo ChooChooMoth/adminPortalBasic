@@ -39,9 +39,23 @@ $this->params['breadcrumbs'][] = $this->title;
     }
     $gridColumns = [
 
-        'computer_id',
-        'app_id',
+        //'computer_id',
+        //'app_id',
         //'id',
+        [
+            'attribute' => 'comp_name',
+            'value' => function($model) {
+                $comps = \app\models\Computers::findOne($model->computer_id);
+                return $items = $comps->computer_name;
+            }
+        ],
+        [
+            'attribute' => 'app_name',
+            'value' => function($model) {
+                $apps = \app\models\Applications::findOne($model->app_id);
+                return $items = $apps->app_name;
+            }
+        ],
 
         $actionColumn,
     ];

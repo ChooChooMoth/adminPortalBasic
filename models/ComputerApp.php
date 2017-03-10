@@ -25,8 +25,10 @@ class ComputerApp extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['computer_id','app_id'], 'exist'],
+            ['app_id', 'exist', 'targetClass' => '\app\models\Applications'],
+            ['computer_id', 'exist', 'targetClass' => '\app\models\Computers'],
             [['computer_id', 'app_id'], 'required'],
+            [['computer_id','app_id'], 'unique', 'targetAttribute' => ['computer_id','app_id']],
         ];
     }
 
@@ -36,6 +38,8 @@ class ComputerApp extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'comp_name' => 'Computer Name',
+            'app_name' => 'Application Name',
             'computer_id' => 'Computer ID',
             'app_id' => 'App ID',
             'id' => 'ID',
