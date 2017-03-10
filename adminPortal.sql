@@ -28,7 +28,7 @@ CREATE TABLE `applications` (
   `vendor_name` char(255) DEFAULT NULL,
   `licence_required` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`app_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `applications` (
 
 LOCK TABLES `applications` WRITE;
 /*!40000 ALTER TABLE `applications` DISABLE KEYS */;
-INSERT INTO `applications` VALUES (4,'heroes3','idk',0),(5,'steam','valve',1),(13,'qewe','weqwe',1);
+INSERT INTO `applications` VALUES (4,'heroes3','idk',1),(5,'steam','valve',1),(13,'qewe','weqwe',1),(14,'qweqw','eqweqw',0),(15,'deqww','eqweqw',0);
 /*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,11 +53,12 @@ CREATE TABLE `computer_app` (
   `app_id` int(255) unsigned NOT NULL,
   `id` int(255) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `computer_id` (`computer_id`,`app_id`),
   KEY `app_idx` (`app_id`),
   KEY `comp_idx` (`computer_id`),
   CONSTRAINT `app` FOREIGN KEY (`app_id`) REFERENCES `applications` (`app_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comp` FOREIGN KEY (`computer_id`) REFERENCES `computers` (`computer_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +67,7 @@ CREATE TABLE `computer_app` (
 
 LOCK TABLES `computer_app` WRITE;
 /*!40000 ALTER TABLE `computer_app` DISABLE KEYS */;
-INSERT INTO `computer_app` VALUES (9,5,11);
+INSERT INTO `computer_app` VALUES (6,4,27),(6,5,23),(6,13,24),(6,14,25),(8,14,26),(13,5,28);
 /*!40000 ALTER TABLE `computer_app` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +85,7 @@ CREATE TABLE `computers` (
   `login` char(255) DEFAULT NULL,
   `password` char(255) DEFAULT NULL,
   PRIMARY KEY (`computer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +94,7 @@ CREATE TABLE `computers` (
 
 LOCK TABLES `computers` WRITE;
 /*!40000 ALTER TABLE `computers` DISABLE KEYS */;
-INSERT INTO `computers` VALUES (6,'Heavy-PC','192.168.1.3','Bird','5678'),(8,'qwerty-PC','255.255.255.255','qwerty','asd'),(9,'12','192.168.1.56','3423','423423'),(11,'321321','192.168.1.24','3213213','321321321');
+INSERT INTO `computers` VALUES (6,'Heavy-PC','192.168.1.3','Bird','5678'),(8,'qwerty-PC','255.255.255.255','qwerty','asd'),(9,'12','192.168.1.56','3423','423423'),(11,'321321','192.168.1.24','3213213','321321321'),(12,'wqewq','0.0.0.0','21321','321321'),(13,'Plain-PC','192.168.1.1','Psh','121212');
 /*!40000 ALTER TABLE `computers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,12 +112,11 @@ CREATE TABLE `users` (
   `id_role` int(11) DEFAULT NULL,
   `comment` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ban_date` timestamp NULL DEFAULT NULL,
   `status` int(11) DEFAULT '10',
   `auth_key` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'Kael','$2y$13$EctLcFK6kdDeL1sA2/R6y..iQD/KpP9uq1xpfbwUsE8SFHKbJvDey',1,'','2017-02-27 10:58:00',NULL,0,'sg33M2LzK4uuk0H5FEGAQTjmEmVIJ_Xf'),(4,'12','$2y$13$.NjJZustIYxuLXKPgZ63AOnX7FSrxqkESl3YDXSKX2cUUDDaQy11G',2,'','2017-02-27 10:58:56',NULL,10,'WhW7y3Kf57b0EPRsjerCaIT2yVDegc7-'),(5,'choochoo','$2y$13$PjTTACODN3UVsTR.LpOniOFGFDpdx4lVtwQBSAm8cx.sNpYEPu4um',2,'','2017-02-27 11:05:59',NULL,10,'Tc_zM6-qJe7wZBf5goRS6RCz9hqfJDvJ'),(6,'11','$2y$13$.g8WuEf4R7MYAAtEkjoCJejf7mAIo5CVmMp01oLZQGfioZ7MMUiRK',1,NULL,'2017-02-17 10:58:02',NULL,10,'RYAtud4uhj-bktRFexJUuihEsZC2KB49'),(7,'13','$2y$13$l.xqvxj85VkvauIM0lnMyOoJAhlWDcRLhADsKItfurUOOTpd8bJDq',1,NULL,'2017-02-27 11:27:33',NULL,10,'UaSp9WAXqg7SEQYr-2HwW5_4LzCo4wlc'),(8,'14','$2y$13$FeIc3p/qno.Abfa0pv8vYO9Gs5pZc93EkoMKdbSo9luDdHf5urn3G',1,NULL,'2017-02-27 12:15:45',NULL,10,'6Qk6OKeV3lhqHCrxyTrowKpbm2EEdVvm');
+INSERT INTO `users` VALUES (3,'Kael','$2y$13$s0cXqIEqoMAMl0GkBAPhROCiVG9.SZaP4E2kjjSWQd7t05Z2weyiK',1,'','2017-03-10 12:52:13',10,'sg33M2LzK4uuk0H5FEGAQTjmEmVIJ_Xf'),(4,'12','$2y$13$z4CCHgvDYlSuzmxmL90WbuaR.YuLPwC/25KZiWl8P5Diwnocas54y',2,'weqweqweqwe','2017-03-10 13:48:53',10,'WhW7y3Kf57b0EPRsjerCaIT2yVDegc7-'),(5,'choochoo','$2y$13$fUEPmGQqk/6W8Oy.W1G63urJ0KIieGHKz/liEs1w.ergfquo0XfWy',2,'','2017-03-10 13:10:49',10,'Tc_zM6-qJe7wZBf5goRS6RCz9hqfJDvJ'),(6,'11','$2y$13$CdHSe4xZ3/wb1EkuNSNVN.7P.YDs8U5u/VnQimUCr.b9hM0OCl/ku',1,'','2017-03-10 13:14:16',10,'RYAtud4uhj-bktRFexJUuihEsZC2KB49'),(33,'22','$2y$13$lbPWHrgPQyowkdfNFsDMS.kVjGBdBwgMWGHiAhs62OXXuyrUrlat2',1,'','2017-03-01 14:53:52',10,'2HIThLYVw2130NQVs-psRhjieotRBFEd'),(37,'test','$2y$13$x1QQqAp6Zh.TEBOMBSgCm.65rZSExqPTLCEgDNqm5YQQyfU0qS3ZC',1,'','2017-03-01 14:52:49',10,'Tq_f-ENXXXH8UfArdI8f5_b1MWGsRd7w'),(38,'222','$2y$13$8b2aZPp2AC.CElVq.GfBkOijPdcE1uPQn/6hEIrSppACw69jrAYha',1,'','2017-03-01 16:15:20',10,'JRPgnYgQ9p0fc5LtgLZWV-4OCDyVL95P'),(39,'Carp','$2y$13$36jSfCtnd46gqzXhoxYrRO5.gndMVoSlq9nL31gkC43VDp6u5T9La',2,'','2017-03-10 13:14:29',10,'ZFoPVVowSG9unSQ304bCzOYHSU6KF0Ku');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -138,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-27 15:50:48
+-- Dump completed on 2017-03-10 17:51:34
